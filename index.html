@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vue komentar + vote</title>
+    <style>
+      .disabled{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="app">
+      <ul>
+        <comments v-for="comment in comments" :comment="comment"></comments>
+      </ul>
+    </div>
+
+    <template id="comment-template">
+      <div @click="sundul" :class="{'disabled':plus}"> + </div>
+      <div>{{ comment.body }} - {{ comment.time }} || Vote: {{ vote }}</div>
+      <div @click="bata" :class="{'disabled':minus}"> - </div>
+    </template>
+
+    <script src="vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
