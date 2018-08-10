@@ -1,6 +1,6 @@
 Vue.component('comments', {
   template: '#comment-template',
-  props:    ['comment'],
+  props:    ['commenty'],
   data: function(){
     return{
       plus: false,
@@ -20,11 +20,11 @@ Vue.component('comments', {
   computed: {
     vote: function(){
       if (this.plus == true) {
-        return this.comment.vote + 1
+        return this.commenty.vote + 1
       } else if (this.minus == true) {
-        return this.comment.vote - 1
+        return this.commenty.vote - 1
       } else {
-        return this.comment.vote
+        return this.commenty.vote
       }
     }
   }
@@ -38,6 +38,12 @@ var vm = new Vue({
       { body: 'komentar saya gan', time: '10-1-14', vote: 4 },
       { body: 'ini komentar baru', time: '30-1-14', vote: 9 },
     ]
+  },
+  methods: {
+    postComment: function(){
+      this.comments.push({ body: this.comment_text, time: '20-1-14', vote: 0 })
+      this.comment_text = ''
+    }
   }
 
 })
